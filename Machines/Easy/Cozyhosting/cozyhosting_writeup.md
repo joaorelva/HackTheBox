@@ -1,28 +1,27 @@
 # Cozyhosting
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f9bfba05-ffac-4cb7-8ab6-1bb2160c2151/308901db-406c-410f-87bb-17007d33bbef/Untitled.png)
+![Untitled](https://github.com/joaorelva/HackTheBox/assets/45034257/eaa26dac-0646-485f-bb51-ca52183757c9)
 
 ## Enumeration
 
 nmap -A -sV -sS cozyhosting.htb
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f9bfba05-ffac-4cb7-8ab6-1bb2160c2151/4ef25221-41ca-47d9-ba7c-c7eda9fd8ef9/Untitled.png)
+![Untitled 1](https://github.com/joaorelva/HackTheBox/assets/45034257/2bb0b3a0-d996-4098-9424-338eefc70511)
 
 dirsearch -u cozyhosting.htb
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f9bfba05-ffac-4cb7-8ab6-1bb2160c2151/9222389e-4e4a-4c3e-a79a-08bab3df3ce5/Untitled.png)
+![Untitled 2](https://github.com/joaorelva/HackTheBox/assets/45034257/8ed93197-4f12-484e-a74b-bccc40fc988f)
 
 I found the session ids for the users in this link http://cozyhosting.htb/actuator/sessions. So i tried to login with the session id of kanderson in inspetctor and i had success.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f9bfba05-ffac-4cb7-8ab6-1bb2160c2151/61459a95-00d7-4a44-b926-19143e29ca08/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f9bfba05-ffac-4cb7-8ab6-1bb2160c2151/f8f2793f-68b0-4150-99d8-29874073aab5/Untitled.png)
+![Untitled 3](https://github.com/joaorelva/HackTheBox/assets/45034257/5b22d001-75b4-42d6-a261-1a0f70053ae5)
+![Untitled 4](https://github.com/joaorelva/HackTheBox/assets/45034257/5b81cd38-e929-48e1-ae2b-4f3585151225)
 
 ## Exploitation
 
 Scrolling to the bottom of the website i saw possible ssh conection. I passed some inputs and captured them on burpsuite.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f9bfba05-ffac-4cb7-8ab6-1bb2160c2151/bef895fa-8c4f-4cb5-bae5-9f1062dac1ea/Untitled.png)
+![Untitled 5](https://github.com/joaorelva/HackTheBox/assets/45034257/005f05c2-51a7-4049-b6fd-327d38b5d538)
 
 It responded to the command, so we will try to reverse shell enconded with base64 because of the special characters.
 
@@ -42,13 +41,13 @@ wget http://10.10.11.230:4445/cloudhosting-0.0.1.jar
 
 jd-gui [cloudhosting-0.0.1.jar](http://10.10.11.230:4445/cloudhosting-0.0.1.jar) to see the file 
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f9bfba05-ffac-4cb7-8ab6-1bb2160c2151/816f822d-6d16-4c4e-8f8d-8002f9ce9caf/Untitled.png)
+![Untitled 6](https://github.com/joaorelva/HackTheBox/assets/45034257/944fcaf5-2eba-49d0-a43a-1205ce36dbd2)
 
 Login in postgres database: psql -h 127.0.0.1 -U postgres
 
 Select * from users;
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f9bfba05-ffac-4cb7-8ab6-1bb2160c2151/adfd133a-3bf2-451e-986f-0f3742ba1bee/Untitled.png)
+![Untitled 7](https://github.com/joaorelva/HackTheBox/assets/45034257/9563c2fe-ee62-4062-8d21-e563d05a9fc8)
 
 john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 
