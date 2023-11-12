@@ -10,8 +10,8 @@ nmap -A -sV -sS <target_ip>
 
 Port 55555 is running a “request baskets” service. Request baskets is a web service to collect arbitrary HTTP requests and inspect them via RESTful API or simple web UI. We can see that the service running is in 1.2.1 version.
 
-![4](https://github.com/joaorelva/HackTheBox/assets/45034257/b712821b-5781-4bc3-8d4f-f99e5a9b47ed)
 ![3](https://github.com/joaorelva/HackTheBox/assets/45034257/cefb8aa7-7494-462a-b174-8d3319a7f47f)
+![4](https://github.com/joaorelva/HackTheBox/assets/45034257/b712821b-5781-4bc3-8d4f-f99e5a9b47ed)
 
 ## Exploitation
 
@@ -27,8 +27,8 @@ As we can saw in the enumeration step, this machine have a service running in po
 
 After that i saw that is running Maltrail v0.53. It’s a vulnerable version and we can found the exploit in https://github.com/spookier/Maltrail-v0.53-Exploit#usage.
 
-![7](https://github.com/joaorelva/HackTheBox/assets/45034257/dccd2070-a74b-471f-af5c-6f97a94275f4)
 ![6](https://github.com/joaorelva/HackTheBox/assets/45034257/4373a6f3-ce35-426d-ad6b-db1f14f49267)
+![7](https://github.com/joaorelva/HackTheBox/assets/45034257/dccd2070-a74b-471f-af5c-6f97a94275f4)
 ![8](https://github.com/joaorelva/HackTheBox/assets/45034257/cadd6aab-81de-4381-b1a7-ff6186e87fa8)
 
 User flag found in the “puma” user directory.
